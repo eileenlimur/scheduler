@@ -11,7 +11,9 @@ import DayListItem from 'components/DayListItem'
 import DayList from 'components/DayList';
 import InterviewerListItem from 'components/InterviewerListItem';
 import InterviewerList from 'components/InterviewerList';
-
+import Appointment from 'components/Appointment';
+import Header from 'components/Appointment/Header';
+import Empty from 'components/Appointment/Empty';
 
 storiesOf("Button", module)
 .addParameters({
@@ -138,28 +140,17 @@ storiesOf('InterviewerList', module)
     />)
   })
 
-
-
-    // <InterviewerList
-    //   interviewers={interviewers}
-    //   value={state.value}
-    //   onChange={e => setState({value: e.target.value})}
-    // />
-
-  // export default function InterviewList(props) {
-
-  //   const interviewers = props.interviewers.map(interviewer=> (
-  //     <InterviewerListItem
-  //     key={interviewer.id}
-  //     name={interviewer.name}
-  //     avatar={interviewer.avatar}
-  //     selected={interviewer.id === props.value}
-  //     setInterviewer={(event) => props.onChange(interviewer.id)}
-  //     />
-  //   ))
-  //   return (
-  //   <section className='interviewers'>
-  //     <h4 className="interviewers__header text--light">Interviewer</h4>
-  //     <ul>{interviewers}</ul>
-  //   </section>
-  //   )}
+storiesOf('Appointment', module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }]
+  })
+  .add('Appointment', () => <Appointment />)
+  .add('Appointment with time', () => (
+  <Appointment time={'12:00PM'}/>
+  ))
+  .add('Header', () => (
+   <Header time='12PM'></Header>
+  ))
+  .add('Empty', () => (
+    <Empty onAdd={action('onAdd')}/>
+  ))
