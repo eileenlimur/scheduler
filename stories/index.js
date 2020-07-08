@@ -112,7 +112,7 @@ const interviewers = [
 
 storiesOf('InterviewerList', module)
   .addParameters({
-    backgrounds: [{ name: 'dark', value: '#222f3w', default: true}]
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   })
   .add('Initial', () => (
     <InterviewerList
