@@ -9,10 +9,10 @@ import 'components/InterviewerListItem.scss'
 //setInterviewer: sets interviewer upon selection
 
 export default function InterviewerListItem (props) {
-  const className = classnames('interviewers__item', {
+  const interviewerClass = classnames('interviewers__item', {
   'interviewers__item--selected': props.selected })
   return (
-    <li className={className} id={props.id} onClick={props.setInterviewer}>
+    <li className={interviewerClass} id={props.id} onClick={props.setInterviewer}>
       <img
         className='interviewers__item-image'
         // src="https://i.imgur.com/LpaY82x.png"

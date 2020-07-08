@@ -9,16 +9,17 @@ export default function InterviewList(props) {
 
   const interviewers = props.interviewers.map(interviewer=> (
     <InterviewerListItem
-    id={interviewer.id}
+    className='interviewers__header__list'
+    key={interviewer.id}
     name={interviewer.name}
     avatar={interviewer.avatar}
-    selected={interviewer.id === props.interviewer}
-    onClick={props.setInterviewer}
+    selected={interviewer.id === props.value}
+    setInterviewer={(event) => props.onChange(interviewer.id)}
     />
   ))
   return (
   <section className='interviewers'>
     <h4 className="interviewers__header text--light">Interviewer</h4>
-    <ul>{interviewers}</ul>
+    <ul className='interviewers__list'>{interviewers}</ul>
   </section>
   )}

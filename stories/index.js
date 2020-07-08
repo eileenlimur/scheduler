@@ -2,6 +2,7 @@ import React from "react";
 
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import useState from 'storybook-addon-state';
 
 import "index.scss";
 
@@ -98,7 +99,7 @@ storiesOf('InterviewerListItem', module)
       id={interviewer.id}
       name={interviewer.name}
       avatar={interviewer.avatar}
-      setInterviewer={action('setInterviewer')}
+      setInterviewer={action('setInterviewer')(interviewer.id)}
     />
   ))
 
@@ -110,6 +111,7 @@ const interviewers = [
   { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
 ];
 
+
 storiesOf('InterviewerList', module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -117,13 +119,47 @@ storiesOf('InterviewerList', module)
   .add('Initial', () => (
     <InterviewerList
       interviewers={interviewers}
-      setInterviewer={action('setInterviewer')}
+      onChange={action('setInterviewer')}
     />
   ))
   .add('Preselected', () => (
     <InterviewerList
       interviewers={interviewers}
-      interviewer={3}
-      setInterviewer={action('setInterviewer')}
+      value={3}
+      onChange={action('setInterviewer')}
     />
-  ));
+  ))
+  .add('Selectable', () => {
+    const [interviewer, setInterviewer] = useState('change', '');
+    return (<InterviewerList
+      interviewers={interviewers}
+      value={interviewer}
+      onChange={v=>setInterviewer(v)}
+    />)
+  })
+
+
+
+    // <InterviewerList
+    //   interviewers={interviewers}
+    //   value={state.value}
+    //   onChange={e => setState({value: e.target.value})}
+    // />
+
+  // export default function InterviewList(props) {
+
+  //   const interviewers = props.interviewers.map(interviewer=> (
+  //     <InterviewerListItem
+  //     key={interviewer.id}
+  //     name={interviewer.name}
+  //     avatar={interviewer.avatar}
+  //     selected={interviewer.id === props.value}
+  //     setInterviewer={(event) => props.onChange(interviewer.id)}
+  //     />
+  //   ))
+  //   return (
+  //   <section className='interviewers'>
+  //     <h4 className="interviewers__header text--light">Interviewer</h4>
+  //     <ul>{interviewers}</ul>
+  //   </section>
+  //   )}
