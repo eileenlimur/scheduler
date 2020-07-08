@@ -154,6 +154,15 @@ storiesOf('Appointment', module)
   .add('Appointment with time', () => (
   <Appointment time={'12:00PM'}/>
   ))
+  .add('Appointment Empty', () => (
+    <Fragment>
+      <Appointment
+      id={1}
+      time="12pm"
+      interview={{ student: "Lydia Miller-Jones", interviewer }}/>
+      <Appointment id="last" time="1pm" />
+    </Fragment>
+  ))
   .add('Header', () => (
    <Header time='12PM'></Header>
   ))
@@ -185,15 +194,6 @@ storiesOf('Appointment', module)
   ))
   .add('Edit', () => (
     <Form name='Eileen Li' interviewers={interviewers} interviewer={1} onSave={() => action('save')} onCancel={action('cancel')}/>
-  ))
-  .add('Appointment Empty', () => (
-    <Fragment>
-      <Appointment
-      id={1}
-      time="12pm"
-      interview={{ student: "Lydia Miller-Jones", interviewer }}/>
-      <Appointment id="last" time="1pm" />
-    </Fragment>
   ))
 
 // As part of our Edit story, the Form component should take the following props:

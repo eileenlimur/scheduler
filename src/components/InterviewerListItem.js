@@ -9,7 +9,7 @@ import 'components/InterviewerListItem.scss'
 //setInterviewer: sets interviewer upon selection
 
 export default function InterviewerListItem (props) {
-  const interviewerClass = classnames('interviewers__item', {
+  const interviewerClass = classnames('interviewers__item',{
   'interviewers__item--selected': props.selected })
   return (
     <li className={interviewerClass} id={props.id} onClick={props.setInterviewer}>
@@ -18,7 +18,7 @@ export default function InterviewerListItem (props) {
         src={props.avatar}
         alt={props.name}
       />
-      {props.name}
+      {props.selected && props.name}
     </li>
   )
 }
