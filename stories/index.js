@@ -16,6 +16,9 @@ import Header from 'components/Appointment/Header';
 import Empty from 'components/Appointment/Empty';
 import Show from 'components/Appointment/Show';
 import Confirm from 'components/Appointment/Confirm';
+import Status from 'components/Appointment/Status';
+import Error from 'components/Appointment/Error';
+
 
 storiesOf("Button", module)
 .addParameters({
@@ -25,7 +28,7 @@ storiesOf("Button", module)
 .add("Confirm", () => <Button confirm>Confirm</Button>)
 .add("Danger", () => <Button danger>Cancel</Button>)
 .add("Clickable", () => (
-  <Button onClick={action("button-clicked")}>Clickable</Button>
+  <Button setInteviewer={action("button-clicked")}>Clickable</Button>
   ))
   .add("Disabled", () => (
     <Button disabled onClick={action("button-clicked")}>
@@ -169,4 +172,10 @@ storiesOf('Appointment', module)
     onConfirm={action('onConfirm')}
     onCancel={action('onCancel')}
     />
+  ))
+  .add('Status', () => (
+    <Status message='Deleting'/>
+  ))
+  .add('Error', () => (
+    <Error message='Could not delete appointment' onClose={action('onClose')}/>
   ))
