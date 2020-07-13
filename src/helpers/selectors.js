@@ -27,8 +27,6 @@ export function getInterviewersForDay(state, day) {
   if (match.length === 0) {
     return [];
   }
-  console.log(match[0]);
-  console.log(match[0].interviewers);
   const interviewerMatch = [];
   if (match.length > 0) {
     Object.keys(state.interviewers).forEach(id => {
