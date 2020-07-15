@@ -44,9 +44,9 @@ export default function Appointment(props) {
   }
 
   return (
-  <section>
+  <article data-testid="appointment" className="appointment">
     <Header time = {props.time}/>
-    {mode === EMPTY && <Empty onAdd={()=>transition(CREATE)} />}
+    {mode === EMPTY && <Empty id={props.id} onAdd={()=>transition(CREATE)} />}
     {mode === SHOW && (
       <Show
         student={props.interview.student}
@@ -96,9 +96,6 @@ export default function Appointment(props) {
         onCancel={back}
       />
     )}
-  </section>
+  </article>
   )
 }
-
-// appointment.interviewers = getInterviewersForDay(state, state.day);
-// console.log(appointment.interviewers);

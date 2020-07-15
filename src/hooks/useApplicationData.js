@@ -35,6 +35,7 @@ export default function useApplicationData() {
 
     const todayIndex = state.days.filter(day => day.appointments.includes(id))[0]['id'] - 1
     const days = [...state.days]
+
     days[todayIndex] = {...state.days[todayIndex], spots: state.days[todayIndex].spots - 1 }
 
     return axios.put(`/api/appointments/${id}`, {interview})
@@ -45,7 +46,7 @@ export default function useApplicationData() {
         days
       })
     })
-    // .catch((e)=>console.log(e));
+    .catch((e)=>console.log(e));
   }
 
   function cancelInterview(id) {
@@ -71,7 +72,7 @@ export default function useApplicationData() {
         days
       })
     })
-    // .catch((e)=>console.log(e))
+    .catch((e)=>console.log(e))
   }
 
   const setDay = day => setState({...state, day});
