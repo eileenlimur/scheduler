@@ -2,7 +2,6 @@ import React from "react";
 
 
 import { render, cleanup, fireEvent } from "@testing-library/react";
-import { queryByText, getByText,  } from "@testing-library/dom";
 
 import Form from "components/Appointment/Form";
 
@@ -67,7 +66,7 @@ describe("Form", () => {
     expect(queryByText(/student name cannot be blank/i)).toBeNull();
 
     expect(onSave).toHaveBeenCalledTimes(1);
-    expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", 1);
+    expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", 1, false);
   })
 
   it("calls onCancel and resets the input field", () => {

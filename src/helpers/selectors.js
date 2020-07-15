@@ -1,6 +1,5 @@
 export function getAppointmentsForDay(state, day) {
   const match = state.days.filter(dayItem => dayItem.name === day)
-  // console.log(match);
   const appointmentsMatch = [];
   if (match.length > 0) {
     Object.keys(state.appointments).forEach(id => {
