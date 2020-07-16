@@ -1,16 +1,15 @@
 import React from 'react';
-import 'components/Appointment/styles.scss';
-import Header from './Header';
 import Show from './Show';
 import Empty from './Empty';
 import Form from './Form';
+import Header from './Header';
 import Status from './Status';
 import Confirm from './Confirm';
 import Error from './Error';
 import useVisualMode from 'hooks/useVisualMode';
+import 'components/Appointment/styles.scss';
 
 export default function Appointment(props) {
-
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -20,6 +19,7 @@ export default function Appointment(props) {
   const EDIT = 'EDIT';
   const ERROR_SAVE = 'ERROR_SAVE';
   const ERROR_DELETE = 'ERROR_DELETE';
+  
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );

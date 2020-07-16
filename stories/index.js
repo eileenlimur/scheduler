@@ -20,16 +20,47 @@ import Status from 'components/Appointment/Status';
 import Error from 'components/Appointment/Error';
 import Form from "components/Appointment/Form";
 
+const days = [
+  {
+    id: 1,
+    name: 'Monday',
+    spots: 2,
+  },
+  {
+    id: 2,
+    name: 'Tuesday',
+    spots: 5,
+  },
+  {
+    id: 3,
+    name: 'Wednesday',
+    spots: 0,
+  },
+];
+
+const interviewer = {
+  id: 1,
+  name: 'Sylvia Palmer',
+  avatar: "https://i.imgur.com/LpaY82x.png"
+};
+
+const interviewers = [
+  { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
+  { id: 2, name: "Tori Malcolm", avatar: "https://i.imgur.com/Nmx0Qxo.png" },
+  { id: 3, name: "Mildred Nazir", avatar: "https://i.imgur.com/T2WwVfS.png" },
+  { id: 4, name: "Cohana Roy", avatar: "https://i.imgur.com/FK8V841.jpg" },
+  { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
+];
 
 storiesOf("Button", module)
-.addParameters({
-  backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-})
-.add("Base", () => <Button>Base</Button>)
-.add("Confirm", () => <Button confirm>Confirm</Button>)
-.add("Danger", () => <Button danger>Cancel</Button>)
-.add("Clickable", () => (
-  <Button setInteviewer={action("button-clicked")}>Clickable</Button>
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+  })
+  .add("Base", () => <Button>Base</Button>)
+  .add("Confirm", () => <Button confirm>Confirm</Button>)
+  .add("Danger", () => <Button danger>Cancel</Button>)
+  .add("Clickable", () => (
+    <Button setInteviewer={action("button-clicked")}>Clickable</Button>
   ))
   .add("Disabled", () => (
     <Button disabled onClick={action("button-clicked")}>
@@ -37,7 +68,7 @@ storiesOf("Button", module)
     </Button>
   ));
   
-  storiesOf('DayListItem', module)
+storiesOf('DayListItem', module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true}]
   })
@@ -47,24 +78,6 @@ storiesOf("Button", module)
   .add('Clickable', () => (
     <DayListItem name="Tuesday" setDay={action('setDay')} spots={5} />
     ));
-    
-    const days = [
-      {
-        id: 1,
-        name: 'Monday',
-        spots: 2,
-      },
-      {
-        id: 2,
-        name: 'Tuesday',
-        spots: 5,
-      },
-      {
-        id: 3,
-        name: 'Wednesday',
-        spots: 0,
-      },
-    ];
 
 storiesOf('DayList', module)
     .addParameters({
@@ -75,13 +88,7 @@ storiesOf('DayList', module)
     ))
     .add('Tuesday', () => (
       <DayList days={days} day={'Tuesday'} setDay={action('setDay')} />
-    ))
-
-const interviewer = {
-  id: 1,
-  name: 'Sylvia Palmer',
-  avatar: "https://i.imgur.com/LpaY82x.png"
-};
+    ));
 
 storiesOf('InterviewerListItem', module)
   .addParameters({
@@ -109,16 +116,7 @@ storiesOf('InterviewerListItem', module)
       avatar={interviewer.avatar}
       setInterviewer={action('setInterviewer')(interviewer.id)}
     />
-  ))
-
-const interviewers = [
-  { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
-  { id: 2, name: "Tori Malcolm", avatar: "https://i.imgur.com/Nmx0Qxo.png" },
-  { id: 3, name: "Mildred Nazir", avatar: "https://i.imgur.com/T2WwVfS.png" },
-  { id: 4, name: "Cohana Roy", avatar: "https://i.imgur.com/FK8V841.jpg" },
-  { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
-];
-
+  ));
 
 storiesOf('InterviewerList', module)
   .addParameters({
@@ -144,7 +142,7 @@ storiesOf('InterviewerList', module)
       value={interviewer}
       onChange={v=>setInterviewer(v)}
     />)
-  })
+  });
 
 storiesOf('Appointment', module)
   .addParameters({
@@ -194,18 +192,4 @@ storiesOf('Appointment', module)
   ))
   .add('Edit', () => (
     <Form name='Eileen Li' interviewers={interviewers} interviewer={1} onSave={() => action('save')} onCancel={action('cancel')}/>
-  ))
-
-// As part of our Edit story, the Form component should take the following props:
-
-// name:String
-// interviewers:Array
-// interviewer:Number
-// onSave:Function
-// onCancel:Function
-
-// As part of our Create story, the Form component should take the following props:
-
-// interviewers:Array
-// onSave:Function
-// onCancel:Function
+  ));

@@ -32,5 +32,3 @@ export default function DayListItem(props) {
     </li>
   );
 }
-
-//takes in props(name, spots, selected) and action (setDay)
