@@ -15,7 +15,3 @@ export default function DayList(props) {
   
   return <ul>{DayListLoop}</ul>
 }
-
-//three props: days(array), day(string), setDay(function)
-//no styles of its own
-//renders list of DayListItems
